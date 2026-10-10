@@ -16,3 +16,4 @@ package-url: https://github.com/build2-packaging/GPUOpen-gpu_performance_api
 package-email: packaging@build2.org ; Mailing list.
 depends: * build2 >= 0.18.0
 depends: * bpkg >= 0.18.0
+depends: libvulkan-headers ^1.4.332
