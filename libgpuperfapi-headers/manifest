@@ -9,6 +9,7 @@ topics: amd, gpa, gpu, performance counters, profiling
 license: MIT ; MIT License.
 description-file: README.md
 package-description-file: PACKAGE-README.md
+changes-file: RELEASE_NOTES.txt
 url: https://github.com/GPUOpen-Tools/gpu_performance_api
 doc-url: https://gpuopen.com/manuals/gpu_performance_api_manual/
 package-url: https://github.com/build2-packaging/GPUOpen-gpu_performance_api
