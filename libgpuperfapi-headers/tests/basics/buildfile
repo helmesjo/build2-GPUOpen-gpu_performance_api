@@ -1,3 +1,19 @@
 import libs = libgpuperfapi-headers%lib{gpuperfapi-headers}
 
 exe{driver}: {hxx cxx}{**} $libs testscript{**}
+
+# The upstream counters header uses anonymous structs inside anonymous
+# unions, which GCC and Clang warn about in the pedantic mode (GCC has no
+# narrower option for this diagnostic). On MinGW, GCC also warns about the
+# MSVC warning pragmas in that header and about the interface loader casting
+# the GetProcAddress() result to the GPA entry point type.
+#
+if ($cxx.id == 'gcc')
+{
+  cxx.coptions += -Wno-pedantic
+
+  if ($cxx.target.class == 'windows')
+    cxx.coptions += -Wno-unknown-pragmas -Wno-cast-function-type
+}
+elif ($cxx.id == 'clang' || $cxx.id == 'msvc-clang')
+  cxx.coptions += -Wno-gnu-anonymous-struct -Wno-nested-anon-types
