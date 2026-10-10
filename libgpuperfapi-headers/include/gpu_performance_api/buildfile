@@ -18,6 +18,15 @@ lib{gpuperfapi-headers}:
   cxx.export.libs = $intf_libs
 }
 
+# The interface loader (gpu_perf_api_interface_loader.h) loads the GPA
+# runtime libraries with dlopen() on Linux.
+#
+if ($cxx.target.class == 'linux')
+{
+  cxx.libs += -ldl
+  lib{gpuperfapi-headers}: cxx.export.libs += -ldl
+}
+
 # Install into the gpu_performance_api/ subdirectory of, say, /usr/include/
 # recreating subdirectories.
 #
