@@ -1,0 +1,28 @@
+intf_libs = # Interface dependencies.
+#import xxxx_libs += libhello%lib{hello}
+
+lib{gpuperfapi-headers}: hxx{**} $intf_libs
+
+# Build options.
+#
+out_pfx = [dir_path] $out_root/include/
+src_pfx = [dir_path] $src_root/include/
+
+cxx.poptions =+ "-I$out_pfx" "-I$src_pfx"
+
+# Export options.
+#
+lib{gpuperfapi-headers}:
+{
+  cxx.export.poptions = "-I$out_pfx" "-I$src_pfx"
+  cxx.export.libs = $intf_libs
+}
+
+# Install into the gpu_performance_api/ subdirectory of, say, /usr/include/
+# recreating subdirectories.
+#
+hxx{*}:
+{
+  install         = include/gpu_performance_api/
+  install.subdirs = true
+}

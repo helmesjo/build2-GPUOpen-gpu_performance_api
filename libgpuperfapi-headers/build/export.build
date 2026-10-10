@@ -1,0 +1,6 @@
+$out_root/
+{
+  include include/gpu_performance_api/
+}
+
+export $out_root/include/gpu_performance_api/$import.target
