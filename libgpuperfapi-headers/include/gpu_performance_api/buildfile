@@ -1,5 +1,5 @@
 intf_libs = # Interface dependencies.
-#import xxxx_libs += libhello%lib{hello}
+import intf_libs += libvulkan-headers%lib{vulkan-headers}
 
 lib{gpuperfapi-headers}: hxx{**} $intf_libs
 
