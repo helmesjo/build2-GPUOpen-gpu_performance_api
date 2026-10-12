@@ -1,2 +1,5 @@
 : 1
 location: libgpuperfapi-headers/
+
+:
+location: libamddxext/

@@ -1,0 +1,3 @@
+import libs = libamddxext%lib{amddxext}
+
+exe{driver}: {hxx cxx}{**} $libs testscript{**}
