@@ -1,3 +1,12 @@
 import libs = libamddxext%lib{amddxext}
 
 exe{driver}: {hxx cxx}{**} $libs testscript{**}
+
+# The upstream headers define pure virtual destructors inline, a Microsoft
+# extension that Clang warns about by default. They also use anonymous
+# structs, which Clang warns about in the pedantic mode and MSVC at /W4.
+#
+if ($cxx.id == 'clang' || $cxx.id == 'msvc-clang')
+  cxx.coptions += -Wno-microsoft-pure-definition -Wno-gnu-anonymous-struct
+elif ($cxx.id == 'msvc')
+  cxx.coptions += /wd4201
