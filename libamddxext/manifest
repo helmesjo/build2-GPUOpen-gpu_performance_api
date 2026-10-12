@@ -13,3 +13,6 @@ package-url: https://github.com/build2-packaging/GPUOpen-gpu_performance_api
 package-email: packaging@build2.org ; Mailing list.
 depends: * build2 >= 0.18.0
 depends: * bpkg >= 0.18.0
+build-exclude: **/*-w64-mingw32 ; Upstream relies on MSVC extensions.
+build-include: windows**
+build-exclude: ** ; Only supported on Windows.
